@@ -59,7 +59,7 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
-var insert_sql = "INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ(CURRENT_TIMESTAMP(),'08:00','-00:00'))";
-var lunch_sql = "INSERT INTO tbl_entries ( clock_time, lunch_punch )  values ( CONVERT_TZ(CURRENT_TIMESTAMP(),'08:00','-00:00'), ? )";
+var insert_sql = "INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ(CURRENT_TIMESTAMP, '+00:00','-08:00') )";
+var lunch_sql = "INSERT INTO tbl_entries ( clock_time, lunch_punch )  values ( CONVERT_TZ(CURRENT_TIMESTAMP,'+00:00','-08:00'), ? )";
 var get_sql =  "CALL GET_PUNCH_DATA()";
 module.exports = router;
