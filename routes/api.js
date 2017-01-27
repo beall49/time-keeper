@@ -37,11 +37,10 @@ router.post('/lunch', function(req, res, next) {
 });
 
 
-
 //process.env.CLEARDB_DATABASE_URL
 function handleDisconnect() {
     connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL); // Recreate the connection, since
-                                                    // the old one cannot be reused.
+    // the old one cannot be reused.
     connection.connect(function(err) {              	// The server is either down
         if (err) {                                     // or restarting (takes a while sometimes).
             //console.log('2. error when connecting to db:', err);
@@ -60,7 +59,7 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
-var insert_sql = "INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ(CURRENT_TIMESTAMP(),'+08:00','-00:00'))";
-var lunch_sql = "INSERT INTO tbl_entries ( clock_time, lunch_punch )  values ( CONVERT_TZ(CURRENT_TIMESTAMP(),'+08:00','-00:00'), ? )";
+var insert_sql = "INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ(CURRENT_TIMESTAMP(),'08:00','-00:00'))";
+var lunch_sql = "INSERT INTO tbl_entries ( clock_time, lunch_punch )  values ( CONVERT_TZ(CURRENT_TIMESTAMP(),'08:00','-00:00'), ? )";
 var get_sql =  "CALL GET_PUNCH_DATA()";
 module.exports = router;

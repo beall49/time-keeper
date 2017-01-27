@@ -96,7 +96,7 @@
                             <!--panel body-->
                             <div class="panel-body ">
                                 <!--small screens-->
-                                <div class="panel panel-primary " ng-repeat="(index, object) in TimeCard">
+                                <div class="panel panel-primary hidden-md hidden-lg" ng-repeat="(index, object) in TimeCard">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">{{object.day_name}} - {{object.clock_date | cleanDate }}</h3>
                                     </div>
@@ -108,31 +108,31 @@
                                 <!--small screens-->
 
                                 <!-- Table -->
-                                <div class="table-responsive box-shadow--16dp" style="max-height: 600px;">
-                                    <!--<table id="assetTable" class="table table-bordered ">-->
-                                        <!--<tbody>-->
-                                        <!--<tr>-->
-                                            <!--<th>Date</th>-->
-                                            <!--<th>Day of Week</th>-->
-                                            <!--<th>Clock In</th>-->
-                                            <!--<th>Clock Out</th>-->
-                                            <!--<th>Hours</th>-->
-                                            <!--<th>Lunch</th>-->
-                                        <!--</tr>-->
-                                        <!--<tr ng-repeat="(index, object) in TimeCard"-->
-                                            <!--ng-class="(object.day_name == 'Monday') ? 'warning h5': ''"-->
-                                            <!--ng-init="showHide(index)">-->
-                                            <!--<td ng-show-start={{Increment}}> {{object.clock_date | cleanDate }}</td>-->
-                                            <!--<td>{{object.day_name}}</td>-->
-                                            <!--<td>{{object.clock_in}}</td>-->
-                                            <!--<td ng-class="(!object.clock_out) ? 'danger': ''">{{object.clock_out}}</td>-->
-                                            <!--<td ng-class="(!object.clock_out) ? 'danger': ''">{{object.hours}}</td>-->
-                                            <!--<td ng-show-end ng-class="(!object.clock_out) ? 'danger': ''">-->
-                                                <!--{{object.lunch==0 ? '' : object.lunch }}-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
-                                        <!--</tbody>-->
-                                    <!--</table>-->
+                                <div class="table-responsive box-shadow--16dp  hidden-xs hidden-sm" style="max-height: 600px;">
+                                    <table id="assetTable" class="table table-bordered ">
+                                        <tbody>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Day of Week</th>
+                                            <th>Clock In</th>
+                                            <th>Clock Out</th>
+                                            <th>Hours</th>
+                                            <th>Lunch</th>
+                                        </tr>
+                                        <tr ng-repeat="(index, object) in TimeCard"
+                                            ng-class="(object.day_name == 'Monday') ? 'warning h5': ''"
+                                            ng-init="showHide(index)">
+                                            <td ng-show-start={{Increment}}> {{object.clock_date | cleanDate }}</td>
+                                            <td>{{object.day_name}}</td>
+                                            <td>{{object.clock_in}}</td>
+                                            <td ng-class="(!object.clock_out) ? 'danger': ''">{{object.clock_out}}</td>
+                                            <td ng-class="(!object.clock_out) ? 'danger': ''">{{object.hours}}</td>
+                                            <td ng-show-end ng-class="(!object.clock_out) ? 'danger': ''">
+                                                {{object.lunch==0 ? '' : object.lunch }}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <!-- Table --><br />
                             </div>
