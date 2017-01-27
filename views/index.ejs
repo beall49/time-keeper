@@ -1,126 +1,155 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp" ng-controller="TimeCardController" id="cntrl">
 <head>
-  <meta charset="utf-8">
-  <title><%= title %></title>
-  <link rel="icon" href="/images/Ryan.png">
-  <link rel="shortcut icon" href="/images/Ryan.png" type="image/x-icon" />
-  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></link>
-  <link href="/bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css" type="text/css"  rel="stylesheet"></link>
-  <link href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css" type="text/css"  rel="stylesheet"></link>
-  <link href="/stylesheets/style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" rel="stylesheet">
-  <link href="//fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <link rel="icon" href="/images/Ryan.png">
+    <link rel="shortcut icon" href="/images/Ryan.png" type="image/x-icon" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="/bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css" type="text/css"
+          rel="stylesheet"></link>
+    <link href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css" type="text/css"
+          rel="stylesheet"></link>
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet">
 
 </head>
 <body>
 <!-- Blank Nav -->
 <div class="navbar navbar-primary navbar-fixed-top">
-  <div class="container" style="margin-left:5px">
-    <div class="navbar-header">
-      <a class="navbar-brand" href style="padding:5px" id="menu-toggle" ng-click="Toggle()">
-        <i class="material-icons md-light md-48">menu</i>
-      </a>
+    <div class="container" style="margin-left:5px">
+        <div class="navbar-header">
+            <a class="navbar-brand" href style="padding:5px" id="menu-toggle" ng-click="Toggle()">
+                <i class="material-icons md-light md-48">menu</i>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav "></ul>
+        </div>
     </div>
-    <div class="navbar-collapse collapse" id="navbar">
-      <ul class="nav navbar-nav "></ul>
-    </div>
-  </div>
 </div>
 <!-- Blank Nav -->
 
 <div id="wrapper" class="toggled">
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand ">
-        <a style="padding-top:7px" href id="menu-toggle-sidebar" ng-click="Toggle()">
-          <i class="material-icons md-inactive md-48">menu</i>
-        </a>
-      </li>
-      <li class="divider"></li>
-      <li>
-        <a href="/" ng-click="Toggle()"><i class="material-icons md-36">home</i> Home </a>
-      </li>
-      <li class="divider"></li>
-    </ul>
-  </div>
-  <!-- /#sidebar -->
-
-  <!-- Ribbon -->
-  <div class="ribbon ribbon-{{colorState}}">
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <!--container -->
-      <div class="container-fluid">
-        <!--row-->
-        <div class="row">
-          <div class="col-lg-1"></div>
-          <!--columns-->
-          <div class="col-lg-10">
-            <!--panel-->
-            <div class="panel panel-default box-shadow--16dp">
-              <!--panel header-->
-              <div class="panel-heading text-center ">
-                <div class="btn-group btn-group-lg">
-                  <button type="button" id="btnSubmit" ng-click="buttonSubmit();"
-                          class="btn btn-{{colorState}} btn-raised">{{Status}}
-                  </button>
-                  <button type="button" id="btnHour" ng-click="btnHour();"
-                          class="btn btn-{{colorState}}  btn-raised">{{HourStatus}}
-                  </button>
-                  <button type="button" id="btnHalf" ng-click="btnHalf();"
-                          class="btn btn-{{colorState}}  btn-raised">{{HalfStatus}}
-                  </button>
-                </div>
-              </div>
-              <!--panel header-->
-              <!--panel body-->
-              <div class="panel-body ">
-                <!-- Table -->
-                <div class="table-responsive box-shadow--16dp" style="max-height: 600px;">
-                  <table id="assetTable" class="table table-bordered ">
-                    <tbody>
-                    <tr>
-                      <th>Date</th>
-                      <th>Day of Week</th>
-                      <th>Clock In</th>
-                      <th>Clock Out</th>
-                      <th>Hours</th>
-                      <th>Lunch</th>
-                    </tr>
-                    <tr ng-repeat="(index, object) in TimeCard"
-                        ng-class="(object.day_name == 'Monday') ? 'warning h5': ''"
-                        ng-init="showHide(index)">
-                      <td ng-show-start={{Increment}}> {{object.clock_date | cleanDate }} </td>
-                      <td>{{object.day_name}}</td>
-                      <td>{{object.clock_in}}</td>
-                      <td ng-class="(!object.clock_out) ? 'danger': ''">{{object.clock_out}}</td>
-                      <td ng-class="(!object.clock_out) ? 'danger': ''">{{object.hours}}</td>
-                      <td ng-show-end ng-class="(!object.clock_out) ? 'danger': ''">
-                        {{object.lunch==0 ? '' : object.lunch }}
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- Table --><br />
-              </div>
-              <!--panel body-->
-            </div>
-            <!--panel-->
-          </div>
-          <!--columns-->
-          <div class="col-lg-1"></div>
-        </div>
-        <!-- row -->
-      </div>
-      <!--container -->
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand ">
+                <a style="padding-top:7px" href id="menu-toggle-sidebar" ng-click="Toggle()">
+                    <i class="material-icons md-inactive md-48">menu</i>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="/" ng-click="Toggle()"><i class="material-icons md-36">home</i> Home </a>
+            </li>
+            <li class="divider"></li>
+        </ul>
     </div>
-    <!-- Page Content -->
-  </div>
-  <!-- Ribbon -->
+    <!-- /#sidebar -->
+
+    <!-- Ribbon -->
+    <div class="ribbon ribbon-{{colorState}}">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <!--container -->
+            <div class="container-fluid">
+                <!--row-->
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <!--columns-->
+                    <div class="col-lg-10">
+                        <!--panel-->
+                        <div class="panel panel-default box-shadow--16dp">
+                            <!--panel header-->
+                            <div class="panel-heading text-center ">
+
+                                <div class="col-sm-12  hidden-lg hidden-md">
+                                    <button type="button" ng-click="buttonSubmit();"
+                                            class="btn btn-lg btn-block btn-{{colorState}} btn-raised">{{Status}}
+                                    </button>
+
+                                    <button type="button" ng-click="btnHour();"
+                                            class="btn btn-lg btn-block btn-{{colorState}}  btn-raised">{{HourStatus}}
+                                    </button>
+
+                                    <button type="button" ng-click="btnHalf();"
+                                            class="btn btn-lg btn-block btn-{{colorState}}  btn-raised">{{HalfStatus}}
+                                    </button>
+                                </div>
+
+                                <div class="btn-group btn-group-lg hidden-sm hidden-xs">
+                                    <button type="button" id="btnSubmit" ng-click="buttonSubmit();"
+                                            class="btn btn-{{colorState}} btn-raised">{{Status}}
+                                    </button>
+                                    <button type="button" id="btnHour" ng-click="btnHour();"
+                                            class="btn btn-{{colorState}}  btn-raised">{{HourStatus}}
+                                    </button>
+                                    <button type="button" id="btnHalf" ng-click="btnHalf();"
+                                            class="btn btn-{{colorState}}  btn-raised">{{HalfStatus}}
+                                    </button>
+                                </div>
+                            </div>
+                            <!--panel header-->
+                            <!--panel body-->
+                            <div class="panel-body ">
+                                <!--small screens-->
+                                <div class="panel panel-primary " ng-repeat="(index, object) in TimeCard">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">{{object.day_name}} - {{object.clock_date | cleanDate }}</h3>
+                                    </div>
+                                    <div class="panel-body" ng-bind-html="PanelText(object)">
+                                        <!--{{object.hours ? "Hours: " + object.hours : "" }}-->
+                                        <!--In: {{object.clock_in}} {{object.clock_out ? " Out: " + object.clock_out : "" }}-->
+                                    </div>
+                                </div>
+                                <!--small screens-->
+
+                                <!-- Table -->
+                                <div class="table-responsive box-shadow--16dp" style="max-height: 600px;">
+                                    <!--<table id="assetTable" class="table table-bordered ">-->
+                                        <!--<tbody>-->
+                                        <!--<tr>-->
+                                            <!--<th>Date</th>-->
+                                            <!--<th>Day of Week</th>-->
+                                            <!--<th>Clock In</th>-->
+                                            <!--<th>Clock Out</th>-->
+                                            <!--<th>Hours</th>-->
+                                            <!--<th>Lunch</th>-->
+                                        <!--</tr>-->
+                                        <!--<tr ng-repeat="(index, object) in TimeCard"-->
+                                            <!--ng-class="(object.day_name == 'Monday') ? 'warning h5': ''"-->
+                                            <!--ng-init="showHide(index)">-->
+                                            <!--<td ng-show-start={{Increment}}> {{object.clock_date | cleanDate }}</td>-->
+                                            <!--<td>{{object.day_name}}</td>-->
+                                            <!--<td>{{object.clock_in}}</td>-->
+                                            <!--<td ng-class="(!object.clock_out) ? 'danger': ''">{{object.clock_out}}</td>-->
+                                            <!--<td ng-class="(!object.clock_out) ? 'danger': ''">{{object.hours}}</td>-->
+                                            <!--<td ng-show-end ng-class="(!object.clock_out) ? 'danger': ''">-->
+                                                <!--{{object.lunch==0 ? '' : object.lunch }}-->
+                                            <!--</td>-->
+                                        <!--</tr>-->
+                                        <!--</tbody>-->
+                                    <!--</table>-->
+                                </div>
+                                <!-- Table --><br />
+                            </div>
+                            <!--panel body-->
+                        </div>
+                        <!--panel-->
+                    </div>
+                    <!--columns-->
+                    <div class="col-lg-1"></div>
+                </div>
+                <!-- row -->
+            </div>
+            <!--container -->
+        </div>
+        <!-- Page Content -->
+    </div>
+    <!-- Ribbon -->
 </div>
 <!-- /#wrapper -->
 <!-- jQuery -->

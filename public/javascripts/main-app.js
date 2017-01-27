@@ -34,6 +34,7 @@ var app = angular.module('myApp', [])
             }
         }
     })
+
     .filter("cleanDate", function(){
         return function(incoming_date){
             return new Date(incoming_date).toLocaleDateString();

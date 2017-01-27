@@ -15,9 +15,21 @@ app.controller('TimeCardController', function($scope, $interval, $http, $sce, AP
         $scope.Counter   = 0;
 
         API.getTimeStamp().success(function(response){
+            console.log(response);
             $scope.TimeCard = response;
         });
     }
+
+    $scope.PanelText = function(incoming){
+        // {{object.hours ? "Hours: " + object.hours : "" }}
+        // In: {{object.clock_in}} {{object.clock_out ? " Out: " + object.clock_out : "" }}
+        var hours = incoming.hours ? "Hours: " + incoming.hours : "";
+        var in_ = "In: " + incoming.clock_in;
+        var _out = (incoming.clock_out ? " Out: " + incoming.clock_out : "");
+        return $sce.trustAsHtml(hours + `<p></p>` + in_  + _out);
+
+    };
+
 
     $scope.buttonSubmit = function(){
         API.punchIn().success(function(){
