@@ -37,7 +37,9 @@ let app = angular.module('myApp', [])
 
     .filter("cleanDate", function(){
         return function(incoming_date){
-            return new Date(incoming_date).toLocaleDateString();
+            let d = new Date(incoming_date);
+            d.setTime(d.getTime()+ (8*60*60*1000));
+            return d.toLocaleDateString()
         }
     });
 

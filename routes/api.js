@@ -9,7 +9,17 @@ router.get('/', function(req, res, next) {
         if (err) {
             res.send('fail')
         } else {
-            res.send(rows[0])
+            let mondays = (new Date().getDay() == 1) ? 2 : 1;
+            let _count = 0;
+            let response = rows[0];
+            // console.log(response);
+            response.forEach(function(entry, index) {
+                if (_count > mondays){
+                    response[index].show = false;
+                }
+                _count = (entry.day_name == 'Monday') ? _count + 1 : _count;
+            });
+            res.send(response)
         }
     });
 });
@@ -35,6 +45,8 @@ router.post('/lunch', function(req, res, next) {
         }
     });
 });
+
+
 
 //process.env.CLEARDB_DATABASE_URL
 function handleDisconnect() {
