@@ -9,7 +9,6 @@ let index = require('./routes/index');
 let users = require('./routes/users');
 let api = require('./routes/api');
 let cert = require('./routes/cert');
-
 let app = express();
 
 // view engine setup

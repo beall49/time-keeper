@@ -1,5 +1,6 @@
 let express = require('express');
 let mysql = require('mysql');
+
 let router = express.Router();
 
 let connection;
@@ -12,7 +13,6 @@ router.get('/', function(req, res, next) {
             let mondays = (new Date().getDay() == 1) ? 2 : 1;
             let _count = 0;
             let response = rows[0];
-            // console.log(response);
             response.forEach(function(entry, index) {
                 if (_count > mondays){
                     response[index].show = false;
@@ -46,20 +46,25 @@ router.post('/lunch', function(req, res, next) {
     });
 });
 
-
-
-//process.env.CLEARDB_DATABASE_URL
 function handleDisconnect() {
-    connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL); // Recreate the connection, since
+    let conn = (function(){
+        if (process.env.hasOwnProperty("CLEARDB_DATABASE_URL")) {
+            return process.env.CLEARDB_DATABASE_URL;
+        } else {
+            let db = require('./db_config');
+            return  db.db_config();
+        }
+    })();
+
+    connection = mysql.createConnection(conn); // Recreate the connection, since
     // the old one cannot be reused.
     connection.connect(function(err) {              	// The server is either down
-        if (err) {                                     // or restarting (takes a while sometimes).
-            //console.log('2. error when connecting to db:', err);
+        if (err) {                                  // or restarting (takes a while sometimes).             //console.log('2. error when connecting to db:', err);
             setTimeout(handleDisconnect, 10000); // We introduce a delay before attempting to reconnect,
         }                                     	// to avoid a hot loop, and to allow our node script to
     });                                     	// process asynchronous requests in the meantime.
 
-    // If you're also serving http, display a 503 error.
+                                                        // If you're also serving http, display a 503 error.
     connection.on('error', function(err) {
         if (err.code === 'PROTOCOL_CONNECTION_LOST') { 	// Connection to the MySQL server is usually
             handleDisconnect();                      	// lost due to either server restart, or a

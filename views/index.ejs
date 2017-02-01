@@ -23,36 +23,36 @@
 </head>
 <body>
 <!-- Blank Nav -->
-<div class="navbar navbar-primary navbar-fixed-top">
-    <div class="container" style="margin-left:5px">
-        <div class="navbar-header">
-            <a class="navbar-brand" href style="padding:5px" id="menu-toggle" ng-click="Toggle()">
-                <i class="material-icons md-light md-48">menu</i>
-            </a>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar">
-            <ul class="nav navbar-nav "></ul>
-        </div>
-    </div>
-</div>
+<!--<div class="navbar navbar-primary navbar-fixed-top">-->
+    <!--<div class="container" style="margin-left:5px">-->
+        <!--<div class="navbar-header">-->
+            <!--<a class="navbar-brand" href style="padding:5px" id="menu-toggle" ng-click="Toggle()">-->
+                <!--<i class="material-icons md-light md-48">menu</i>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="navbar-collapse collapse" id="navbar">-->
+            <!--<ul class="nav navbar-nav "></ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 <!-- Blank Nav -->
 
 <div id="wrapper" class="toggled">
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand ">
-                <a style="padding-top:7px" href id="menu-toggle-sidebar" ng-click="Toggle()">
-                    <i class="material-icons md-inactive md-48">menu</i>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="/" ng-click="Toggle()"><i class="material-icons md-36">home</i> Home </a>
-            </li>
-            <li class="divider"></li>
-        </ul>
-    </div>
+    <!--<div id="sidebar-wrapper">-->
+        <!--<ul class="sidebar-nav">-->
+            <!--<li class="sidebar-brand ">-->
+                <!--<a style="padding-top:7px" href id="menu-toggle-sidebar" ng-click="Toggle()">-->
+                    <!--<i class="material-icons md-inactive md-48">menu</i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="divider"></li>-->
+            <!--<li>-->
+                <!--<a href="/" ng-click="Toggle()"><i class="material-icons md-36">home</i> Home </a>-->
+            <!--</li>-->
+            <!--<li class="divider"></li>-->
+        <!--</ul>-->
+    <!--</div>-->
     <!-- /#sidebar -->
 
     <!-- Ribbon -->
@@ -120,7 +120,7 @@
 
                                 <!-- Table -->
                                 <div class="table-responsive box-shadow--16dp  hidden-xs hidden-sm" style="max-height: 600px;">
-                                    <table id="assetTable" class="table table-bordered ">
+                                    <table id="assetTable" class="table table-bordered text-center">
                                         <tbody >
                                         <tr>
                                             <th>Date</th>
@@ -133,7 +133,7 @@
                                         <tr ng-repeat="object in TimeCard"
                                             ng-class="(object.day_name == 'Monday') ? 'warning h5': ''"
                                             ng-show="object.show">
-                                            <td>{{object.clock_date | cleanDate }}</td>
+                                            <td >{{object.clock_date | cleanDate }}</td>
                                             <td>{{object.day_name}}</td>
                                             <td>{{object.clock_in}}</td>
                                             <td ng-class="(!object.clock_out) ? 'danger': ''">
@@ -167,10 +167,9 @@
     <!-- Ribbon -->
 </div>
 <!-- /#wrapper -->
-<!-- jQuery -->
+
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <script src="/javascripts/main-app.js"></script>
 <script src="/javascripts/timecard.js"></script>
 </body>

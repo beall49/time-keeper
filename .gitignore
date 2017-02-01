@@ -46,3 +46,6 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+
+#db config data
+routes/db_config.js
