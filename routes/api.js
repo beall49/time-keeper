@@ -36,18 +36,12 @@ router.post('/lunch', function(req, res, next) {
     });
 });
 
-let db_config = {
-    host: 'us-cdbr-iron-east-04.cleardb.net',
-    user: 'bea34c3b4ac93b',
-    password: '91333983',
-    database: 'heroku_ebbaec513600b2a',
-    dateStrings: 'date'
-};
+
 
 
 //process.env.CLEARDB_DATABASE_URL
 function handleDisconnect() {
-    connection = mysql.createConnection(db_config); // Recreate the connection, since
+    connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL); // Recreate the connection, since
     // the old one cannot be reused.
     connection.connect(function(err) {              	// The server is either down
         if (err) {                                     // or restarting (takes a while sometimes).
