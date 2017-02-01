@@ -41,6 +41,7 @@ let app = angular.module('myApp', [])
         }
     });
 
-
+// var earl = `${host}/api/logs-date-time?type=${type}&start=${time_value.startDateInt}` +
+//     `&end=${time_value.endDateInt}&status=${status}&topvalues=${top_values}`;
 
     

@@ -36,9 +36,6 @@ router.post('/lunch', function(req, res, next) {
     });
 });
 
-
-
-
 //process.env.CLEARDB_DATABASE_URL
 function handleDisconnect() {
     connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL); // Recreate the connection, since

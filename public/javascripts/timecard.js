@@ -21,10 +21,11 @@ app.controller('TimeCardController', function($scope, $interval, $http, $sce, AP
     }
 
     $scope.PanelText = function(incoming){
-        let hours = incoming.hours ? "Hours: " + incoming.hours + `<p></p>`: "";
-        let in_ = "In: " + incoming.clock_in;
-        let _out = (incoming.clock_out ? " Out: " + incoming.clock_out : "");
-        return $sce.trustAsHtml(`<h3>` + hours +  in_  + _out + `</h3>`);
+        let in_   = "In: " + incoming.clock_in;
+        let _out  = (incoming.clock_out ? " Out: " + incoming.clock_out : "");
+        let hours = incoming.hours ? "Hours: " + incoming.hours  + `<p></p>`: "";
+        let lunch = incoming.lunch > 0 ? "Lunch: " + incoming.lunch + `<p></p>` : "";
+        return $sce.trustAsHtml([`<h3>`, in_, _out, `<p></p>`, lunch, hours, `</h3>`].join(""));
     };
 
 
