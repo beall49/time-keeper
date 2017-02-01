@@ -1,8 +1,8 @@
-var express = require('express');
-var mysql = require('mysql');
-var router = express.Router();
+let express = require('express');
+let mysql = require('mysql');
+let router = express.Router();
 
-var connection;
+let connection;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     connection.query(get_sql, function(err, rows, fields) {
@@ -25,8 +25,8 @@ router.post('/insert', function(req, res, next) {
 });
 
 router.post('/lunch', function(req, res, next) {
-    var lunch = req.body.lunch;
-    var sql = lunch_sql.replace("?", lunch);
+    let lunch = req.body.lunch;
+    let sql = lunch_sql.replace("?", lunch);
     connection.query(sql, function(err, rows, fields) {
         if (err) {
             res.send('fail')
@@ -36,8 +36,7 @@ router.post('/lunch', function(req, res, next) {
     });
 });
 
-
-//process.env.CLEARDB_DATABASE_URL
+// process.env.CLEARDB_DATABASE_URL
 function handleDisconnect() {
     connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL); // Recreate the connection, since
     // the old one cannot be reused.
@@ -59,7 +58,7 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
-var insert_sql = "INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ(CURRENT_TIMESTAMP, '+00:00','-08:00') )";
-var lunch_sql = "INSERT INTO tbl_entries ( clock_time, lunch_punch )  values ( CONVERT_TZ(CURRENT_TIMESTAMP,'+00:00','-08:00'), ? )";
-var get_sql =  "CALL GET_PUNCH_DATA()";
+let insert_sql = "INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ(CURRENT_TIMESTAMP, '+00:00','-08:00') )";
+let lunch_sql = "INSERT INTO tbl_entries ( clock_time, lunch_punch )  values ( CONVERT_TZ(CURRENT_TIMESTAMP,'+00:00','-08:00'), ? )";
+let get_sql =  "CALL GET_PUNCH_DATA()";
 module.exports = router;

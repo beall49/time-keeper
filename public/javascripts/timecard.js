@@ -21,13 +21,10 @@ app.controller('TimeCardController', function($scope, $interval, $http, $sce, AP
     }
 
     $scope.PanelText = function(incoming){
-        // {{object.hours ? "Hours: " + object.hours : "" }}
-        // In: {{object.clock_in}} {{object.clock_out ? " Out: " + object.clock_out : "" }}
-        var hours = incoming.hours ? "Hours: " + incoming.hours : "";
-        var in_ = "In: " + incoming.clock_in;
-        var _out = (incoming.clock_out ? " Out: " + incoming.clock_out : "");
-        return $sce.trustAsHtml(hours + `<p></p>` + in_  + _out);
-
+        let hours = incoming.hours ? "Hours: " + incoming.hours + `<p></p>`: "";
+        let in_ = "In: " + incoming.clock_in;
+        let _out = (incoming.clock_out ? " Out: " + incoming.clock_out : "");
+        return $sce.trustAsHtml(`<h3>` + hours +  in_  + _out + `</h3>`);
     };
 
 
@@ -53,7 +50,7 @@ app.controller('TimeCardController', function($scope, $interval, $http, $sce, AP
     };
 
     function toggleSideBar(){
-        var screenWidth = $(window).width();
+        let screenWidth = $(window).width();
         if (screenWidth < 500) {
             $("#wrapper").toggleClass("toggled");
         }
@@ -62,8 +59,8 @@ app.controller('TimeCardController', function($scope, $interval, $http, $sce, AP
     $scope.showHide = function(ndx){
         if ($scope.Increment == false) return;
 
-        var _count      = $scope.Counter;
-        var entryNumber = (new Date().getDay() == 1) ? 2 : 1;
+        let _count      = $scope.Counter;
+        let entryNumber = (new Date().getDay() == 1) ? 2 : 1;
 
         if (_count > entryNumber) {
             $scope.Increment = false;

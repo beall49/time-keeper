@@ -1,11 +1,11 @@
-var app = angular.module('myApp', [])
+let app = angular.module('myApp', [])
     .run(function($rootScope){
         $rootScope.Toggle = function(){
             $("#wrapper").toggleClass("toggled");
         };
     })
     .service('API', function($http){
-        var base_api = "api/";
+        let base_api = "api/";
         return {
             getTimeStamp: function(){
                 return $http.get(base_api);
@@ -21,7 +21,7 @@ var app = angular.module('myApp', [])
     .directive('compileTemplate', function($compile, $parse){
         return {
             link: function(scope, element, attr){
-                var parsed = $parse(attr.ngBindHtml);
+                let parsed = $parse(attr.ngBindHtml);
 
                 function getStringValue(){
                     return (parsed(scope) || '').toString();
