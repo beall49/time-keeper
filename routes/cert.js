@@ -2,8 +2,8 @@ let express = require('express');
 let router = express.Router();
 
 /* GET cert  page. */
-router.get('/ymVX-wFsORFNClagUnHrUWIcf8PRjZSX9CvSQBquhbo', function(req, res, next) {
-    res.send('ymVX-wFsORFNClagUnHrUWIcf8PRjZSX9CvSQBquhbo.HThcSBDIO_752vpqj-b0Dx6CztXVwI-lcy5hwLwbwwA')
+router.get('/ooVkrsNg2JJtR8pP_ajX1gjk9sB1Tj7ZBgIlAYgd2d4', function(req, res, next) {
+    res.send('ooVkrsNg2JJtR8pP_ajX1gjk9sB1Tj7ZBgIlAYgd2d4.HThcSBDIO_752vpqj-b0Dx6CztXVwI-lcy5hwLwbwwA')
 });
 
 
