@@ -60,24 +60,20 @@
                                                  style="margin-top: 0; width: 100%;">
                                                 <div class="btn-group">
                                                     <button type="button"
-                                                            ng-class="RecordStatus.value === true ? 'btn-warning' : 'btn-primary' "
-                                                            ng-click="updateButtonModel('RecordStatus')"
-                                                            ng-model="RecordStatus.value"
+                                                            ng-click="buttonSubmit()"
                                                             class="btn btn-primary btn-raised">
                                                         Clock In
                                                     </button>
                                                 </div>
                                                 <div class="btn-group">
                                                     <button type="button"
-                                                            ng-class="TopValues.value === true ? 'btn-warning' : 'btn-primary' "
-                                                            ng-click="updateButtonModel('TopValues');"
-                                                            ng-model="TopValues.value"
+                                                            ng-click="btnHour();"
                                                             class="btn btn-primary btn-raised">
                                                         Hour Lunch
                                                     </button>
                                                 </div>
                                                 <div class="btn-group">
-                                                    <button type="button" ng-click="buttonSubmitClick();"
+                                                    <button type="button" ng-click="btnHalf()"
                                                             class="btn btn-primary btn-raised">
                                                         Half Hour Lunch
                                                     </button>
