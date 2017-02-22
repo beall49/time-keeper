@@ -1,11 +1,11 @@
 app.controller('TimeCardController', function($scope, $filter, $sce, API){
-    $scope.Status          = "Clock In";
-    $scope.HourStatus      = "Hour Lunch";
-    $scope.HalfStatus      = "Half Hour Lunch";
-    $scope.colorState      = "primary";
-    $scope.TimeCard        = [];
+    $scope.Status     = "Clock In";
+    $scope.HourStatus = "Hour Lunch";
+    $scope.HalfStatus = "Half Hour Lunch";
+    $scope.colorState = "primary";
+    $scope.TimeCard   = [];
     $scope.TimeStamps = {
-        date:  new Date(new Date().toLocaleString())
+        date: new Date(new Date().toLocaleString())
     };
     // toggleSideBar();
     getTimeCard();
@@ -13,7 +13,6 @@ app.controller('TimeCardController', function($scope, $filter, $sce, API){
     function getTimeCard(){
         $scope.Increment = true;
         API.getTimeStamp().success(function(response){
-            //console.log(response);
             $scope.TimeCard = response;
         });
     }
@@ -26,6 +25,13 @@ app.controller('TimeCardController', function($scope, $filter, $sce, API){
         return $sce.trustAsHtml([`<h3>`, in_, _out, `<p></p>`, lunch, hours, `</h3>`].join(""));
     };
 
+    $scope.insertTimeStamp = function(){
+        API.punchInWithTimeStamp($scope.TimeStamps.date)
+            .success(function(data){
+                console.log(data);
+                getTimeCard();
+            })
+    };
 
     $scope.buttonSubmit = function(){
         API.punchIn().success(function(){
@@ -47,11 +53,4 @@ app.controller('TimeCardController', function($scope, $filter, $sce, API){
             getTimeCard();
         });
     };
-
-    function toggleSideBar(){
-        let screenWidth = $(window).width();
-        if (screenWidth < 500) {
-            $("#wrapper").toggleClass("toggled");
-        }
-    }
 });

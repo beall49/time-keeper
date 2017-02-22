@@ -14,8 +14,6 @@ let app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,7 +21,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-//app.all('*', ensureSecure);
+app.all('*', ensureSecure);
 app.use('/', index);
 app.use('/api/', api);
 app.use('/.well-known/acme-challenge/', cert);
@@ -56,7 +54,7 @@ function ensureSecure(req, res, next){
     }
     // handle port numbers if you need non defaults
     // res.redirect('https://' + req.host + req.url); // express 3.x
-    //res.redirect('https://' + req.hostname + req.url); // express 4.x
+    res.redirect('https://' + req.hostname + req.url); // express 4.x
 }
 
 module.exports = app;

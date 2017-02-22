@@ -34,9 +34,17 @@ router.post('/insert', function(req, res, next) {
     });
 });
 
-router.post('/insert-time-stamp', function(req, res, next) {
-    console.log(req.body);
-    res.send([])
+router.post('/insert-time-stamp', function(req, res) {
+
+    let insert_time = `INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ('${req.body.date_time}', '+00:00','-08:00') )`;
+    console.log(insert_time);
+    connection.query(insert_time, function(err, rows) {
+        if (err) {
+            res.send('fail')
+        } else {
+            res.send(rows)
+        }
+    });
 });
 
 router.post('/lunch', function(req, res, next) {
@@ -81,6 +89,7 @@ function handleDisconnect() {
 
 handleDisconnect();
 let insert_sql = "INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ(CURRENT_TIMESTAMP, '+00:00','-08:00') )";
+
 let lunch_sql = "INSERT INTO tbl_entries ( clock_time, lunch_punch )  values ( CONVERT_TZ(CURRENT_TIMESTAMP,'+00:00','-08:00'), ? )";
 let get_sql =  "CALL GET_PUNCH_DATA()";
 module.exports = router;

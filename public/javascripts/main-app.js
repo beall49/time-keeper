@@ -1,9 +1,4 @@
 let app = angular.module('myApp', [])
-    .run(function($rootScope){
-        $rootScope.Toggle = function(){
-            $("#wrapper").toggleClass("toggled");
-        };
-    })
     .service('API', function($http){
         let base_api = "api/";
         return {
@@ -12,6 +7,9 @@ let app = angular.module('myApp', [])
             },
             punchIn: function(){
                 return $http.post(base_api + "insert");
+            },
+            punchInWithTimeStamp: function(date_time){
+                return $http.post(base_api + "insert-time-stamp/", JSON.stringify({"date_time": date_time}));
             },
             setLunch: function(lunch){
                 return $http.post(base_api + "lunch", JSON.stringify({"lunch": lunch}));
@@ -34,16 +32,13 @@ let app = angular.module('myApp', [])
             }
         }
     })
-
     .filter("cleanDate", function(){
         return function(incoming_date){
             let d = new Date(incoming_date);
-            d.setTime(d.getTime()+ (8*60*60*1000));
+            d.setTime(d.getTime() + (8 * 60 * 60 * 1000));
             return d.toLocaleDateString()
         }
     });
 
-// var earl = `${host}/api/logs-date-time?type=${type}&start=${time_value.startDateInt}` +
-//     `&end=${time_value.endDateInt}&status=${status}&topvalues=${top_values}`;
 
     
