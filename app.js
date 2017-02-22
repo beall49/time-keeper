@@ -6,7 +6,6 @@ let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
 let index = require('./routes/index');
-let users = require('./routes/users');
 let api = require('./routes/api');
 let cert = require('./routes/cert');
 let app = express();
@@ -26,7 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.all('*', ensureSecure);
 app.use('/', index);
-app.use('/users', users);
 app.use('/api/', api);
 app.use('/.well-known/acme-challenge/', cert);
 

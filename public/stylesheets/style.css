@@ -428,3 +428,6 @@ url('/public/bower_components/material-design-iconfont/iconfont/MaterialIcons-Re
   background-color: rgb(217, 83, 79);
   border-color: rgb(212, 63, 58);
 }
+.dater {
+  width: 255px;
+}

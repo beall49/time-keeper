@@ -1,11 +1,13 @@
-app.controller('TimeCardController', function($scope, $interval, $http, $sce, API){
-    $scope.Status     = "Clock In";
-    $scope.HourStatus = "Hour Lunch";
-    $scope.HalfStatus   = "Half Hour Lunch";
-    $scope.colorState   = "primary";
-    $scope.TimeCard     = [];
-
-    toggleSideBar();
+app.controller('TimeCardController', function($scope, $filter, $sce, API){
+    $scope.Status          = "Clock In";
+    $scope.HourStatus      = "Hour Lunch";
+    $scope.HalfStatus      = "Half Hour Lunch";
+    $scope.colorState      = "primary";
+    $scope.TimeCard        = [];
+    $scope.TimeStamps = {
+        date:  new Date(new Date().toLocaleString())
+    };
+    // toggleSideBar();
     getTimeCard();
 
     function getTimeCard(){
@@ -19,7 +21,7 @@ app.controller('TimeCardController', function($scope, $interval, $http, $sce, AP
     $scope.PanelText = function(incoming){
         let in_   = "In: " + incoming.clock_in;
         let _out  = (incoming.clock_out ? " Out: " + incoming.clock_out : "");
-        let hours = incoming.hours ? "Hours: " + incoming.hours  + `<p></p>`: "";
+        let hours = incoming.hours ? "Hours: " + incoming.hours + `<p></p>` : "";
         let lunch = incoming.lunch > 0 ? "Lunch: " + incoming.lunch + `<p></p>` : "";
         return $sce.trustAsHtml([`<h3>`, in_, _out, `<p></p>`, lunch, hours, `</h3>`].join(""));
     };

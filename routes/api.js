@@ -34,6 +34,11 @@ router.post('/insert', function(req, res, next) {
     });
 });
 
+router.post('/insert-time-stamp', function(req, res, next) {
+    console.log(req.body);
+    res.send([])
+});
+
 router.post('/lunch', function(req, res, next) {
     let lunch = req.body.lunch;
     let sql = lunch_sql.replace("?", lunch);
