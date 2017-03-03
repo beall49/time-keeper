@@ -9,7 +9,7 @@ let app = angular.module('myApp', [])
                 return $http.post(base_api + "insert");
             },
             punchInWithTimeStamp: function(date_time){
-                return $http.post(base_api + "insert-time-stamp/", JSON.stringify({"date_time": date_time}));
+                return  $http.post(base_api + "insert-time-stamp/", JSON.stringify({"date_time": date_time}));
             },
             setLunch: function(lunch){
                 return $http.post(base_api + "lunch", JSON.stringify({"lunch": lunch}));
