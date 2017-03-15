@@ -35,9 +35,7 @@ router.post('/insert', function(req, res, next) {
 });
 
 router.post('/insert-time-stamp', function(req, res) {
-
-    let insert_time = `INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ('${req.body.date_time}', '+00:00','-08:00') )`;
-    console.log(insert_time);
+    let insert_time = `INSERT INTO tbl_entries ( clock_time )  values ( CONVERT_TZ('${req.body.date_time}', '+00:00','-07:00') )`;
     connection.query(insert_time, function(err, rows) {
         if (err) {
             res.send('fail')
