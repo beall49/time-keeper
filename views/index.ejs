@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-<div  >
+<div>
     <!-- Ribbon -->
     <div class="ribbon ribbon-primary">
         <!-- Page Content -->
@@ -39,21 +39,19 @@
                         <div class="panel panel-default box-shadow--16dp" ng-cloak>
                             <!--panel header-->
                             <div class="panel panel-heading" ng-cloak>
-                                <div class="row">                          
+                                <div class="row">
                                     <div class="">
                                         <div class="col-md-4 col-sm-12 col-xs-12">
                                             <div class="btn-group btn-group-vertical"
                                                  style="margin-top: 0; width: 100%;">
                                                 <div class="btn-group">
-                                                    <button type="button"
-                                                            ng-click="buttonSubmit()"
+                                                    <button type="button" ng-click="buttonSubmit()"
                                                             class="btn btn-primary btn-raised">
                                                         {{Status.punch}}
                                                     </button>
                                                 </div>
                                                 <div class="btn-group">
-                                                    <button type="button"
-                                                            ng-click="btnHour();"
+                                                    <button type="button" ng-click="btnHour();"
                                                             class="btn btn-primary btn-raised">
                                                         {{Status.full}}
                                                     </button>
@@ -109,6 +107,7 @@
 
                                 <!-- Table -->
                                 <div class="table-responsive box-shadow--16dp  hidden-xs hidden-sm"
+                                     ng-show="TimeCard.length>0"
                                      style="max-height: 600px;">
                                     <table id="assetTable" class="table table-bordered text-center">
                                         <tbody>
