@@ -54,6 +54,7 @@ app.controller('TimeCardController', function($scope, $filter, $sce, API){
             });
     };
 
+    //this is for small screens
     $scope.PanelText = function(incoming){
         let in_   = "In: " + incoming.clock_in;
         let _out  = (incoming.clock_out ? " Out: " + incoming.clock_out : "");
