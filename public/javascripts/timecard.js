@@ -40,7 +40,7 @@ app.controller('TimeCardController', function($scope, $filter, $sce, API){
 
     $scope.btnHour = function(){
         API.setLunch("1.0")
-            .success(function(){
+            .then(function(){
                 $scope.Status.full = "Hour Lunch Event captured";
                 getTimeCard();
             });
