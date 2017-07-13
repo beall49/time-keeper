@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "npm install && npm start"
   },
   "dependencies": {
     "body-parser": "^1.17",
