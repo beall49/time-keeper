@@ -1,6 +1,6 @@
 {
   "name": "timecard",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,5 +14,8 @@
     "morgan": "~1.7.0",
     "mysql": "^2.12.0",
     "serve-favicon": "~2.3.0"
+  },
+  "engines": {
+    "node": "8.1.4"
   }
 }
