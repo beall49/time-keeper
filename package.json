@@ -17,5 +17,17 @@
   },
   "engines": {
     "node": "8.1.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beall49/time-card-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beall49/time-card-site/issues"
+  },
+  "homepage": "https://github.com/beall49/time-card-site#readme",
+  "description": ""
 }
